@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>刘品川 · 个人简历</title>
+    <style>
+        /* ===== CSS Variables & Reset ===== */
+        :root {
+            --color-primary: #2563eb;
+            --color-primary-light: #3b82f6;
+            --color-primary-dark: #1d4ed8;
+            --color-accent: #0ea5e9;
+            --color-bg: #f8fafc;
+            --color-bg-card: #ffffff;
+            --color-text: #0f172a;
+            --color-text-secondary: #475569;
+            --color-border: #e2e8f0;
+            --color-shadow: rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --transition: 0.2s ease;
+            --max-width: 1120px;
+            --nav-height: 68px;
+            --avatar-size: 110px;
+        }
+
+        [data-theme="dark"] {
+            --color-bg: #0f172a;
+            --color-bg-card: #1e293b;
+            --color-text: #f1f5f9;
+            --color-text-secondary: #94a3b8;
+            --color-border: #334155;
+            --color-shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding-top: var(--nav-height);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-border);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary-light);
+            border-radius: 8px;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 1000;
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 4px var(--color-shadow);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: var(--color-primary);
+        }
+        .navbar .logo span {
+            color: var(--color-text);
+        }
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .navbar .nav-links a {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            color: var(--color-text-secondary);
+            transition: background var(--transition), color var(--transition);
+        }
+        .navbar .nav-links a:hover {
+            background: var(--color-border);
+            color: var(--color-text);
+        }
+        .navbar .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar .nav-actions button {
+            background: none;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+            transition: background var(--transition), color var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar .nav-actions button:hover {
+            background: var(--color-border);
+            color: var(--color-text);
+        }
+        .navbar .nav-actions .print-btn {
+            font-size: 1rem;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 40px 0 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 32px;
+            background: linear-gradient(145deg, var(--color-bg-card), var(--color-bg));
+            border-radius: 0 0 var(--radius) var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero .avatar {
+            width: var(--avatar-size);
+            height: var(--avatar-size);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-primary-light);
+            box-shadow: 0 8px 24px var(--color-shadow);
+            margin-bottom: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hero .avatar:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.25);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-top: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .hero .tags .badge {
+            background: var(--color-border);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            transition: background var(--transition), transform var(--transition);
+        }
+        .hero .tags .badge:hover {
+            background: var(--color-primary-light);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .hero .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 20px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+        .hero .contact-row .item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero .contact-row .item .icon {
+            font-size: 1.1rem;
+        }
+        .hero .contact-row .copy-btn {
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            transition: background var(--transition);
+        }
+        .hero .contact-row .copy-btn:hover {
+            background: var(--color-border);
+        }
+
+        /* ===== Highlights ===== */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .highlights .hl-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 18px 16px;
+            text-align: center;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 2px 8px var(--color-shadow);
+        }
+        .highlights .hl-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--color-shadow);
+        }
+        .highlights .hl-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.2;
+        }
+        .highlights .hl-card .label {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ===== Section ===== */
+        .section {
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--color-primary);
+            display: inline-block;
+            letter-spacing: -0.3px;
+        }
+
+        /* ===== Tabs ===== */
+        .tabs {
+            margin-top: 8px;
+        }
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 20px;
+        }
+        .tabs-nav button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: color var(--transition), border-color var(--transition), background var(--transition);
+            border-radius: 6px 6px 0 0;
+        }
+        .tabs-nav button:hover {
+            color: var(--color-text);
+            background: var(--color-border);
+        }
+        .tabs-nav button[aria-selected="true"] {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+            font-weight: 600;
+        }
+        .tabs-panel {
+            display: none;
+            animation: fadeUp 0.25s ease;
+        }
+        .tabs-panel[role="tabpanel"] {
+            display: none;
+        }
+        .tabs-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 2px 8px var(--color-shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px var(--color-shadow);
+        }
+        .card-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .card-header h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        .card-header .meta {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .card .company {
+            font-weight: 500;
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .card ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+        .card ul li strong {
+            color: var(--color-text);
+        }
+
+        /* ===== Project Grid ===== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-grid .card {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0;
+        }
+        .project-grid .card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0 8px;
+        }
+        .project-grid .card .tech span {
+            background: var(--color-border);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+        .project-grid .card .result {
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        /* ===== Skills ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .skills-grid .skill-group {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px var(--color-shadow);
+        }
+        .skills-grid .skill-group h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        .skills-grid .skill-group .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 4px 0;
+            color: var(--color-text-secondary);
+        }
+        .skills-grid .skill-group .skill-item .bar {
+            width: 100px;
+            height: 4px;
+            background: var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-left: 12px;
+        }
+        .skills-grid .skill-group .skill-item .bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
+            transition: width 0.6s ease;
+        }
+
+        /* ===== Education & Awards ===== */
+        .edu-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 2px 8px var(--color-shadow);
+            margin-bottom: 20px;
+        }
+        .edu-card .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .edu-card .row .left {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .edu-card .row .right {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .edu-card .detail {
+            margin-top: 10px;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .edu-card .detail .highlight {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .awards-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 12px;
+        }
+        .awards-list .award-tag {
+            background: var(--color-border);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            transition: background var(--transition), transform var(--transition);
+        }
+        .awards-list .award-tag:hover {
+            background: var(--color-primary-light);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: 24px 0 32px;
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .footer .update {
+            margin-top: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== Back to Top ===== */
+        .back-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+            transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            z-index: 999;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-top:hover {
+            transform: scale(1.08);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .navbar .nav-links a {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+            .navbar .logo {
+                font-size: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .subtitle {
+                font-size: 0.95rem;
+            }
+            .hero .avatar {
+                --avatar-size: 80px;
+                width: var(--avatar-size);
+                height: var(--avatar-size);
+            }
+            .highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .tabs-nav button {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero .contact-row {
+                font-size: 0.85rem;
+                gap: 8px 14px;
+            }
+            .back-top {
+                bottom: 20px;
+                right: 20px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 8px 12px;
+                gap: 4px;
+            }
+            .navbar .nav-links {
+                gap: 2px;
+            }
+            .navbar .nav-actions button {
+                padding: 4px 6px;
+                font-size: 0.9rem;
+            }
+            body {
+                padding-top: 80px;
+            }
+            .highlights {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .highlights .hl-card .number {
+                font-size: 1.5rem;
+            }
+            .hero {
+                padding: 24px 0 20px;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .avatar {
+                --avatar-size: 70px;
+                width: var(--avatar-size);
+                height: var(--avatar-size);
+            }
+        }
+
+        /* ===== Print ===== */
+        @media print {
+            body {
+                padding-top: 0 !important;
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .navbar,
+            .back-top,
+            .nav-actions {
+                display: none !important;
+            }
+            .card,
+            .edu-card,
+            .skill-group,
+            .hl-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                break-inside: avoid;
+            }
+            .card:hover,
+            .hl-card:hover {
+                transform: none !important;
+            }
+            .hero {
+                background: #f5f7fa !important;
+                border-bottom: 1px solid #ddd !important;
+            }
+            .tabs-nav button {
+                border-bottom: 2px solid transparent !important;
+            }
+            .tabs-nav button[aria-selected="true"] {
+                border-bottom-color: #2563eb !important;
+            }
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .highlights {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .section {
+                margin-bottom: 24px;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 20px !important;
+            }
+            .footer {
+                border-top: 1px solid #ddd !important;
+            }
+            .hero .contact-row .copy-btn {
+                display: none;
+            }
+            .skills-grid .skill-group .skill-item .bar {
+                border: 1px solid #ddd;
+                background: #eee;
+            }
+            .skills-grid .skill-group .skill-item .bar .fill {
+                background: #2563eb !important;
+            }
+            .hero .avatar {
+                border: 2px solid #2563eb !important;
+                box-shadow: none !important;
+            }
+        }
+
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .tabs-panel {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" role="navigation" aria-label="主导航">
+        <div class="logo">刘品川 <span>· 简历</span></div>
+        <ul class="nav-links">
+            <li><a href="#section-hero">首页</a></li>
+            <li><a href="#section-highlights">亮点</a></li>
+            <li><a href="#section-experience">经历</a></li>
+            <li><a href="#section-projects">项目</a></li>
+            <li><a href="#section-skills">技能</a></li>
+            <li><a href="#section-education">教育</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle" aria-label="切换深色/浅色模式" title="切换主题">🌓</button>
+            <button class="print-btn" aria-label="打印简历" title="打印 / 导出PDF">🖨️</button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN ===== -->
+    <main class="container" id="app">
+        <!-- All sections will be rendered by JS -->
+    </main>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-top" aria-label="返回顶部" title="返回顶部">↑</button>
+
+    <script>
+        // ============================================================
+        //  RESUME DATA
+        // ============================================================
+        const resume = {
+            name: '刘品川',
+            title: '网络工程 · 大一 · 互联网与AI方向',
+            phone: '15902788901',
+            email: '89190508@qq.com',
+            github: 'github.com/liupinchuan',
+            blog: 'liupinchuan.tech（建设中）',
+            address: '湖北省武汉市 · 武汉科技大学（黄家湖校区）',
+            avatar: 'logo.jpg', // 大头照
+
+            hero: {
+                description: '立志成为“互联网与AI的智慧使用者”，注重理论与实践结合。高考英语133分，具备出色的英文文献阅读能力，熟练使用AI工具链辅助开发。',
+                tags: ['Python', '网络工程', 'AI工具链', '数据分析', 'Web开发', 'Linux']
+            },
+
+            highlights: [
+                { number: '133', label: '高考英语（全省前8%）' },
+                { number: '3.6/4.0', label: '当前GPA（专业前15%）' },
+                { number: '120+', label: '网络设备巡检维护' },
+                { number: '30+', label: 'GitHub项目Star' },
+                { number: '96/100', label: '计算机网络课程最高分' }
+            ],
+
+            experience: [{
+                id: 'exp1',
+                title: '技术助理（暑期实习）',
+                company: '武汉云创科技有限责任公司',
+                location: '湖北武汉',
+                period: '2026年7月 – 2026年8月',
+                details: [
+                    '协助技术团队完成公司内部网络设备巡检与运维记录整理，累计处理 <strong>120+</strong> 台路由/交换机的配置备份与状态监控，发现并上报 <strong>5</strong> 处潜在配置隐患，确保办公网络零故障运行。',
+                    '负责客户技术支持工单的初筛与分类，运用基础网络知识对 <strong>200+</strong> 条用户反馈进行问题归因，将高级工程师处理耗时缩减约 <strong>30%</strong>，工单平均响应时间从 45分钟 缩短至 28分钟。',
+                    '参与公司产品官网的日常内容更新与前端调试，利用HTML/CSS修复 <strong>15+</strong> 处页面兼容性Bug，并协助完成一次产品功能上线前的全链路测试，编写 <strong>8份</strong> 测试用例文档。',
+                    '独立整理并撰写《常见网络问题自助排查手册》（共 <strong>12</strong> 个场景），培训后供客服团队使用，使一线解决率提升约 <strong>25%</strong>。'
+                ]
+            }],
+
+            projects: [{
+                id: 'proj1',
+                name: '“武科智联”校园二手交易平台',
+                period: '2026年3月 – 2026年6月',
+                type: '个人/课程项目',
+                tech: ['HTML/CSS/JavaScript', 'Flask', 'SQLite', '腾讯云'],
+                details: [
+                    '针对校园闲置物品信息分散、交易效率低的问题，自主设计并开发一个轻量级二手交易Web平台，实现用户注册登录、商品发布/搜索/下架、站内留言等核心功能。',
+                    '引入基于关键词匹配的简单推荐算法，将商品曝光率提升约 <strong>40%</strong>。',
+                    '部署至腾讯云轻量服务器，在计算机学院内部进行 <strong>50人</strong> 的封闭测试，累计发布商品 <strong>180+</strong> 件，成功交易 <strong>62</strong> 笔，用户活跃度达 <strong>75%</strong>。',
+                    '项目代码开源至GitHub，获得 <strong>30+</strong> star，并被院内两位老师作为课程案例引用。'
+                ]
+            }, {
+                id: 'proj2',
+                name: '基于Wireshark的校园网络流量分析与异常检测',
+                period: '2025年10月 – 2025年12月',
+                type: '课程设计',
+                tech: ['Wireshark', 'Python/Scapy', '数据分析'],
+                details: [
+                    '针对校园网高峰期卡顿问题，在宿舍楼栋出口处进行为期 <strong>2周</strong> 的流量抓包（经许可），采集数据包 <strong>10万+</strong> 个。',
+                    '使用Python（Scapy库）解析并统计TCP/UDP流量占比、TOP IP地址、端口分布，识别出 <strong>3个</strong> 异常高频连接（疑似P2P下载），定位为带宽占用主因。',
+                    '编写数据分析报告，提出“时段性限流”建议，被学院网络中心采纳作为临时优化策略，实施后晚间高峰延迟降低约 <strong>20%</strong>。',
+                    '该分析报告获得计算机网络课程 <strong>最高分（96/100）</strong>，并在院级学生科技论坛进行分享。'
+                ]
+            }, {
+                id: 'proj3',
+                name: 'AI赋能英语学习助手——智能作文批改原型',
+                period: '2026年4月 – 至今',
+                type: '个人兴趣项目',
+                tech: ['大语言模型API', 'Prompt Engineering', 'Web应用'],
+                details: [
+                    '利用大语言模型API（ChatGPT）开发一个简易的英语作文批改工具，可针对用户输入的英文文本输出语法纠错、词汇替换建议及逻辑结构评分。',
+                    '设计提示词工程（Prompt Engineering），优化模型输出格式，将批改反馈的准确率从初始的 <strong>72%</strong> 提升至 <strong>89%</strong>（基于 100篇 测试样本人工评估）。',
+                    '封装为Web应用界面，供本校英语社团 <strong>30名</strong> 同学试用，收集反馈并迭代 <strong>4个</strong> 版本，用户满意度达 <strong>4.6/5.0</strong>。',
+                    '后续计划融入语音输入功能，并整合到校园英语学习社群中，预计覆盖 <strong>200+</strong> 名成员。'
+                ]
+            }],
+
+            skills: {
+                '编程语言': [
+                    { name: 'Python', level: 85 },
+                    { name: 'C语言', level: 70 },
+                    { name: 'JavaScript', level: 65 },
+                    { name: 'Java（基础）', level: 50 }
+                ],
+                '网络与系统': [
+                    { name: 'TCP/IP协议栈', level: 80 },
+                    { name: 'HTTP/HTTPS/DNS', level: 75 },
+                    { name: 'Wireshark抓包分析', level: 80 },
+                    { name: 'Linux命令行', level: 65 }
+                ],
+                'AI与工具链': [
+                    { name: 'ChatGPT / Claude', level: 90 },
+                    { name: 'Copilot辅助开发', level: 85 },
+                    { name: 'Prompt Engineering', level: 75 },
+                    { name: 'AI应用整合', level: 70 }
+                ],
+                '数据与办公': [
+                    { name: 'Excel（透视表/VLOOKUP）', level: 75 },
+                    { name: 'SQL（MySQL）', level: 60 },
+                    { name: 'PowerPoint', level: 70 },
+                    { name: 'Notion / Obsidian', level: 80 }
+                ]
+            },
+
+            education: {
+                school: '武汉科技大学',
+                major: '网络工程专业 本科（在读）',
+                period: '2025年9月 – 2029年6月',
+                location: '湖北武汉',
+                gpa: '3.6/4.0（专业前15%）',
+                courses: '计算机网络、数据结构与算法、操作系统、Python程序设计、Web前端开发、数据库原理',
+                selfStudy: '人工智能导论、机器学习基础（吴恩达课程进行中）、Linux系统管理与Shell脚本编程',
+                honors: '连续两学期获校级“优秀学生”称号，获新生入学奖学金（高考成绩优异奖）',
+                english: '高考英语 133 分（全省前 8%），具备出色的英语文献阅读与学术沟通能力，可独立阅读IEEE、ACM等英文论文及官方技术文档'
+            },
+
+            awards: [
+                '武汉科技大学新生入学奖学金（高考成绩优异奖）',
+                '2025-2026学年校级“优秀学生”称号',
+                '计算机学院“创新实践之星”提名',
+                '大学英语四级（CET-4）备考中（模拟考550+）',
+                '全国计算机等级考试二级（Python语言）【待补，2026年9月考试】',
+                '阿里云ACA云计算认证（备考中）',
+                '武汉科技大学“新生杯”篮球赛八强（队长，场均12分）',
+                '校园书法大赛硬笔组 二等奖',
+                '院级“十佳歌手”入围奖（吉他弹唱）',
+                '计算机协会技术部干事，参与组织“AI科普讲座”3场，累计参与400+人'
+            ],
+
+            extra: {
+                selfPosition: '立志成为“互联网与AI的智慧使用者”，注重理论与实践结合，持续通过Coursera、Kaggle等平台学习数据科学与AI课程，已完成 4门 在线认证课程。',
+                interests: '长期坚持篮球训练（团队领导与抗压能力）、书法练习（专注力与细节把控）及吉他演奏（创造力与表现力），能够在高强度的学业与项目压力下保持高效时间管理与心理韧性。',
+                community: '活跃于校内技术社群，定期整理并分享AI工具使用技巧、优质学习资源，已撰写 15篇 学习笔记发布在个人博客，累计阅读量 3000+。',
+                future: '大二将深入参与科研/竞赛（如“挑战杯”、“中国大学生计算机设计大赛”），并积极寻求互联网/AI方向优质实习，持续提升工程落地与团队协作能力。'
+            },
+
+            updateDate: '2026年8月'
+        };
+
+        // ============================================================
+        //  RENDER ENGINE
+        // ============================================================
+
+        function render() {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            // ---- Hero ----
+            const heroSection = createSection('section-hero');
+            heroSection.className = 'hero';
+            heroSection.innerHTML = `
+                ${resume.avatar ? `<img src="${resume.avatar}" alt="刘品川头像" class="avatar" onerror="this.style.display='none'">` : ''}
+                <h1>${resume.name}</h1>
+                <p class="subtitle">${resume.title}</p>
+                <p class="subtitle" style="margin-top:6px; font-size:0.95rem;">${resume.hero.description}</p>
+                <div class="tags">
+                    ${resume.hero.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+                </div>
+                <div class="contact-row">
+                    <span class="item"><span class="icon">📱</span> ${resume.phone}</span>
+                    <span class="item"><span class="icon">✉️</span> ${resume.email} <button class="copy-btn" data-email="${resume.email}">📋 复制</button></span>
+                    <span class="item"><span class="icon">🐙</span> <a href="https://${resume.github}" target="_blank">${resume.github}</a></span>
+                    <span class="item"><span class="icon">🌐</span> ${resume.blog}</span>
+                    <span class="item"><span class="icon">📍</span> ${resume.address}</span>
+                </div>
+            `;
+            app.appendChild(heroSection);
+
+            // ---- Highlights ----
+            const hlSection = createSection('section-highlights');
+            hlSection.innerHTML = `<div class="highlights">${resume.highlights.map(h => `
+                <div class="hl-card"><div class="number">${h.number}</div><div class="label">${h.label}</div></div>
+            `).join('')}</div>`;
+            app.appendChild(hlSection);
+
+            // ---- Experience (Tabs) ----
+            const expSection = createSection('section-experience');
+            expSection.innerHTML = `<h2 class="section-title">💼 工作 / 实习经历</h2><div class="tabs" id="exp-tabs"></div>`;
+            app.appendChild(expSection);
+            const expTabs = document.getElementById('exp-tabs');
+            if (resume.experience.length) {
+                const nav = document.createElement('div');
+                nav.className = 'tabs-nav';
+                nav.setAttribute('role', 'tablist');
+                const panels = document.createElement('div');
+
+                resume.experience.forEach((exp, idx) => {
+                    const btn = document.createElement('button');
+                    btn.setAttribute('role', 'tab');
+                    btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+                    btn.setAttribute('aria-controls', `exp-panel-${exp.id}`);
+                    btn.id = `exp-tab-${exp.id}`;
+                    btn.textContent = exp.company;
+                    btn.addEventListener('click', () => switchTab('exp', exp.id, idx));
+                    nav.appendChild(btn);
+
+                    const panel = document.createElement('div');
+                    panel.className = 'tabs-panel' + (idx === 0 ? ' active' : '');
+                    panel.setAttribute('role', 'tabpanel');
+                    panel.setAttribute('aria-labelledby', `exp-tab-${exp.id}`);
+                    panel.id = `exp-panel-${exp.id}`;
+                    panel.innerHTML = `
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>${exp.title}</h3>
+                                <span class="meta">${exp.period} · ${exp.location}</span>
+                            </div>
+                            <div class="company">${exp.company}</div>
+                            <ul>${exp.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                        </div>
+                    `;
+                    panels.appendChild(panel);
+                });
+
+                expTabs.appendChild(nav);
+                expTabs.appendChild(panels);
+            } else {
+                expTabs.innerHTML = '<p style="color:var(--color-text-secondary);">暂无实习经历。</p>';
+            }
+
+            // ---- Projects (Tabs) ----
+            const projSection = createSection('section-projects');
+            projSection.innerHTML = `<h2 class="section-title">🚀 项目经历</h2><div class="tabs" id="proj-tabs"></div>`;
+            app.appendChild(projSection);
+            const projTabs = document.getElementById('proj-tabs');
+            if (resume.projects.length) {
+                const nav = document.createElement('div');
+                nav.className = 'tabs-nav';
+                nav.setAttribute('role', 'tablist');
+                const panels = document.createElement('div');
+
+                resume.projects.forEach((p, idx) => {
+                    const btn = document.createElement('button');
+                    btn.setAttribute('role', 'tab');
+                    btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+                    btn.setAttribute('aria-controls', `proj-panel-${p.id}`);
+                    btn.id = `proj-tab-${p.id}`;
+                    btn.textContent = p.name.length > 12 ? p.name.slice(0, 10) + '…' : p.name;
+                    btn.addEventListener('click', () => switchTab('proj', p.id, idx));
+                    nav.appendChild(btn);
+
+                    const panel = document.createElement('div');
+                    panel.className = 'tabs-panel' + (idx === 0 ? ' active' : '');
+                    panel.setAttribute('role', 'tabpanel');
+                    panel.setAttribute('aria-labelledby', `proj-tab-${p.id}`);
+                    panel.id = `proj-panel-${p.id}`;
+                    panel.innerHTML = `
+                        <div class="project-grid">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>${p.name}</h3>
+                                    <span class="meta">${p.period}</span>
+                                </div>
+                                <div style="font-size:0.85rem;color:var(--color-text-secondary);margin-bottom:6px;">${p.type}</div>
+                                <div class="tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
+                                <ul>${p.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                            </div>
+                        </div>
+                    `;
+                    panels.appendChild(panel);
+                });
+
+                projTabs.appendChild(nav);
+                projTabs.appendChild(panels);
+            } else {
+                projTabs.innerHTML = '<p style="color:var(--color-text-secondary);">暂无项目经历。</p>';
+            }
+
+            // ---- Skills ----
+            const skillSection = createSection('section-skills');
+            skillSection.innerHTML = `<h2 class="section-title">🧠 专业技能</h2><div class="skills-grid"></div>`;
+            app.appendChild(skillSection);
+            const grid = skillSection.querySelector('.skills-grid');
+            Object.entries(resume.skills).forEach(([category, items]) => {
+                const group = document.createElement('div');
+                group.className = 'skill-group';
+                group.innerHTML = `<h4>${category}</h4>`;
+                items.forEach(s => {
+                    const div = document.createElement('div');
+                    div.className = 'skill-item';
+                    div.innerHTML = `
+                        <span>${s.name}</span>
+                        <span class="bar"><span class="fill" style="width:${s.level}%;"></span></span>
+                    `;
+                    group.appendChild(div);
+                });
+                grid.appendChild(group);
+            });
+
+            // ---- Education ----
+            const eduSection = createSection('section-education');
+            const edu = resume.education;
+            eduSection.innerHTML = `
+                <h2 class="section-title">🎓 教育背景</h2>
+                <div class="edu-card">
+                    <div class="row">
+                        <span class="left">${edu.school} · ${edu.major}</span>
+                        <span class="right">${edu.period} · ${edu.location}</span>
+                    </div>
+                    <div class="detail">
+                        <span class="highlight">GPA：${edu.gpa}</span><br>
+                        <strong>核心课程：</strong>${edu.courses}<br>
+                        <strong>自学方向：</strong>${edu.selfStudy}<br>
+                        <strong>英语：</strong>${edu.english}<br>
+                        <strong>荣誉：</strong>${edu.honors}
+                    </div>
+                </div>
+                <h2 class="section-title" style="margin-top:32px;">🏆 获奖与证书</h2>
+                <div class="awards-list">${resume.awards.map(a => `<span class="award-tag">${a}</span>`).join('')}</div>
+            `;
+            app.appendChild(eduSection);
+
+            // ---- Extra / Personal ----
+            const extraSection = createSection('section-extra');
+            extraSection.innerHTML = `
+                <h2 class="section-title">🌟 个人补充</h2>
+                <div class="card">
+                    <p><strong>自我定位：</strong>${resume.extra.selfPosition}</p>
+                    <p style="margin-top:10px;"><strong>兴趣与素质：</strong>${resume.extra.interests}</p>
+                    <p style="margin-top:10px;"><strong>社区贡献：</strong>${resume.extra.community}</p>
+                    <p style="margin-top:10px;"><strong>未来规划：</strong>${resume.extra.future}</p>
+                </div>
+            `;
+            app.appendChild(extraSection);
+
+            // ---- Footer ----
+            const footer = document.createElement('footer');
+            footer.className = 'footer';
+            footer.innerHTML = `
+                <div>© ${new Date().getFullYear()} ${resume.name} · 使用 ❤️ 与 🧠 构建</div>
+                <div class="update">最后更新：${resume.updateDate}</div>
+            `;
+            app.appendChild(footer);
+
+            // ---- after render: copy email ----
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const email = this.getAttribute('data-email');
+                    if (email) {
+                        navigator.clipboard.writeText(email).then(() => {
+                            const orig = this.textContent;
+                            this.textContent = '✅ 已复制';
+                            setTimeout(() => { this.textContent = orig; }, 2000);
+                        }).catch(() => {
+                            // fallback
+                            const inp = document.createElement('input');
+                            inp.value = email;
+                            document.body.appendChild(inp);
+                            inp.select();
+                            document.execCommand('copy');
+                            inp.remove();
+                            const orig = this.textContent;
+                            this.textContent = '✅ 已复制';
+                            setTimeout(() => { this.textContent = orig; }, 2000);
+                        });
+                    }
+                });
+            });
+        }
+
+        // ---- Tab switching ----
+        function switchTab(type, id, idx) {
+            const container = document.getElementById(type === 'exp' ? 'exp-tabs' : 'proj-tabs');
+            if (!container) return;
+            const nav = container.querySelector('.tabs-nav');
+            const panels = container.querySelectorAll('.tabs-panel');
+            const buttons = nav.querySelectorAll('button');
+            buttons.forEach((b, i) => {
+                b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+            });
+            panels.forEach((p, i) => {
+                p.classList.toggle('active', i === idx);
+            });
+        }
+
+        // ---- Section helper ----
+        function createSection(id) {
+            const section = document.createElement('section');
+            section.id = id;
+            section.className = 'section';
+            return section;
+        }
+
+        // ============================================================
+        //  THEME TOGGLE
+        // ============================================================
+        function initTheme() {
+            const stored = localStorage.getItem('theme') || 'light';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = stored === 'dark' ? 'dark' : (stored === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeBtn();
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeBtn();
+        }
+
+        function updateThemeBtn() {
+            const btn = document.querySelector('.theme-toggle');
+            if (btn) {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? '☀️' : '🌓';
+                btn.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
+            }
+        }
+
+        // ============================================================
+        //  BACK TO TOP
+        // ============================================================
+        function initBackTop() {
+            const btn = document.querySelector('.back-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ============================================================
+        //  PRINT
+        // ============================================================
+        function initPrint() {
+            document.querySelector('.print-btn').addEventListener('click', () => {
+                window.print();
+            });
+        }
+
+        // ============================================================
+        //  SMOOTH ANCHOR
+        // ============================================================
+        function initSmoothAnchor() {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 70;
+                        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+            initTheme();
+            initBackTop();
+            initPrint();
+            initSmoothAnchor();
+
+            document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+
+            // Fix tabs after render (ensure first tab active)
+            document.querySelectorAll('.tabs').forEach(tabContainer => {
+                const firstBtn = tabContainer.querySelector('.tabs-nav button');
+                if (firstBtn) {
+                    const panels = tabContainer.querySelectorAll('.tabs-panel');
+                    panels.forEach((p, i) => {
+                        p.classList.toggle('active', i === 0);
+                    });
+                    firstBtn.setAttribute('aria-selected', 'true');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
